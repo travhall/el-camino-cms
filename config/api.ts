@@ -1,3 +1,4 @@
+// config/api.ts
 export default {
   rest: {
     defaultLimit: 25,
