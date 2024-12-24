@@ -25,6 +25,12 @@
       "type": "text",
       "maxLength": 160
     },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
     "menuLocation": {
       "type": "enumeration",
       "enum": ["header", "footer", "none"],
@@ -41,7 +47,8 @@
         "shared.media",
         "shared.quote",
         "shared.rich-text",
-        "shared.slider"
+        "shared.slider",
+        "shared.video"
       ]
     },
     "seo": {

@@ -23,15 +23,22 @@
       "type": "uid",
       "targetField": "title"
     },
+    "headerType": {
+      "type": "enumeration",
+      "enum": ["image", "video"],
+      "default": "image",
+      "required": true
+    },
     "cover": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ]
+      "allowedTypes": ["images"]
+    },
+    "video": {
+      "type": "component",
+      "component": "shared.video",
+      "required": false
     },
     "author": {
       "type": "relation",
@@ -51,11 +58,17 @@
         "shared.media",
         "shared.quote",
         "shared.rich-text",
-        "shared.slider"
+        "shared.slider",
+        "shared.video"
       ]
     },
     "isFeatured": {
       "type": "boolean"
+    },
+    "buttonLabel": {
+      "type": "string",
+      "default": "Read Article",
+      "required": false
     }
   }
 }
