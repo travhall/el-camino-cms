@@ -31,7 +31,15 @@ functions = "netlify/functions"
 
 [functions]
   node_bundler = "esbuild"
-  external_node_modules = ["better-sqlite3", "@strapi/database"]
+  external_node_modules = [
+    "better-sqlite3",
+    "@strapi/database",
+    "sequelize",
+    "mongoose",
+    "redis",
+    "koa2-ratelimit",
+    "pg-hstore"
+  ]
 
 [build.environment]
 NPM_FLAGS = "--no-frozen-lockfile"
