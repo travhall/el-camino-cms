@@ -6,6 +6,10 @@ export default ({ env }) => {
   const client = env("DATABASE_CLIENT", "sqlite");
 
   if (client === "postgres") {
+    if (!env("DATABASE_URL")) {
+      throw new Error("DATABASE_URL is required when using postgres");
+    }
+
     const { host, port, database, user, password } = parse(env("DATABASE_URL"));
 
     return {
@@ -13,13 +17,18 @@ export default ({ env }) => {
         client,
         connection: {
           host,
-          port: parseInt(port),
+          port: parseInt(port, 10),
           database,
           user,
           password,
-          ssl: {
-            rejectUnauthorized: false,
-          },
+          ssl: env.bool("DATABASE_SSL", true)
+            ? {
+                rejectUnauthorized: env.bool(
+                  "DATABASE_SSL_REJECT_UNAUTHORIZED",
+                  false
+                ),
+              }
+            : false,
           schema: env("DATABASE_SCHEMA", "public"),
         },
         pool: {
@@ -31,6 +40,7 @@ export default ({ env }) => {
           reapIntervalMillis: 1000,
           createRetryIntervalMillis: 100,
         },
+        debug: env.bool("DATABASE_DEBUG", false),
       },
     };
   }
@@ -47,6 +57,7 @@ export default ({ env }) => {
         ),
       },
       useNullAsDefault: true,
+      debug: env.bool("DATABASE_DEBUG", false),
     },
   };
 };

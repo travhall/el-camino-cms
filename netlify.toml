@@ -3,14 +3,6 @@ command = "pnpm build"
 publish = "dist"
 functions = "netlify/functions"
 
-[dev]
-  command = "pnpm develop"
-  targetPort = 1337
-  port = 8888
-  publish = "public"
-  jwtSecret = "SOME-SECRET"
-  jwtRoleClaim = "strapi.roles"
-
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/strapi"
@@ -18,14 +10,20 @@ functions = "netlify/functions"
   force = true
 
 [[redirects]]
+  from = "/admin/build/*"
+  to = "/dist/build/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/admin/*"
-  to = "/admin/index.html"
+  to = "/dist/build/index.html"
   status = 200
   force = true
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/dist/build/index.html"
   status = 200
   force = true
 
