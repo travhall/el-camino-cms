@@ -1,17 +1,34 @@
-# netlify.toml
 [build]
-  command = "pnpm build"
-  publish = "dist"
-  functions = "netlify/functions"
+command = "pnpm build"
+publish = "dist"
+functions = "netlify/functions"
 
-[build.environment]
-  NODE_VERSION = "20"
+[dev]
+  command = "pnpm develop"
+  targetPort = 1337
+  port = 8888
+  publish = "public"
+  jwtSecret = "SOME-SECRET"
+  jwtRoleClaim = "strapi.roles"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/strapi"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
 
 [functions]
   node_bundler = "esbuild"
-  included_files = ["./config/**", "./src/**"]
-
-[[headers]]
-  for = "/api/*"
-    [headers.values]
-    Access-Control-Allow-Origin = "*"
+  external_node_modules = ["better-sqlite3", "@strapi/database"]
