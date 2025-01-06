@@ -4,26 +4,20 @@ publish = "dist"
 functions = "netlify/functions"
 
 [[redirects]]
+  from = "/admin/*"
+  to = "/build/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/strapi"
   status = 200
   force = true
 
 [[redirects]]
-  from = "/build/*"
-  to = "/dist/build/*"
-  status = 200
-  force = true
-
-[[redirects]]
   from = "/uploads/*"
-  to = "/dist/uploads/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/*"
-  to = "/dist/build/index.html"
+  to = "/uploads/:splat"
   status = 200
   force = true
 
@@ -38,6 +32,8 @@ functions = "netlify/functions"
     "koa2-ratelimit",
     "pg-hstore"
   ]
+  node_bundler = "esbuild"
+  included_files = ["./config/**", "./src/**"]
 
 [build.environment]
-NPM_FLAGS = "--no-frozen-lockfile"
+NODE_VERSION = "20"
