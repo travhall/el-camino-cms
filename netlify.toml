@@ -1,7 +1,7 @@
 # netlify.toml
 [build]
   command = "pnpm build"
-  publish = "public"
+  publish = "dist"
   functions = "netlify/functions"
 
 [build.environment]
@@ -10,9 +10,6 @@
 [functions]
   node_bundler = "esbuild"
   included_files = ["./config/**", "./src/**"]
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
 
 [[headers]]
   for = "/api/*"
