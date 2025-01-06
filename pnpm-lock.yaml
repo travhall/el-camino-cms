@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@netlify/functions':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@strapi/plugin-cloud':
         specifier: 5.6.0
         version: 5.6.0(cwot4inzkp7qyasfkpjlj4w2pu)
@@ -17,6 +20,15 @@ importers:
       '@strapi/strapi':
         specifier: 5.6.0
         version: 5.6.0(@babel/runtime@7.26.0)(@codemirror/autocomplete@6.18.4)(@codemirror/language@6.10.7)(@codemirror/lint@6.8.4)(@codemirror/search@6.5.8)(@codemirror/state@6.5.0)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.36.0)(@swc/helpers@0.5.15)(@types/hoist-non-react-statics@3.3.6)(@types/node@20.17.10)(@types/react-dom@18.3.5(@types/react@18.3.17))(@types/react@18.3.17)(better-sqlite3@11.3.0)(codemirror@5.65.18)(koa@2.15.2)(pg@8.13.1)(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.28.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@4.2.1)(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(terser@5.37.0)(type-fest@4.30.2)
+      '@types/node':
+        specifier: ^20.17.10
+        version: 20.17.10
+      '@types/react':
+        specifier: ^18
+        version: 18.3.17
+      '@types/react-dom':
+        specifier: ^18
+        version: 18.3.5(@types/react@18.3.17)
       better-sqlite3:
         specifier: 11.3.0
         version: 11.3.0
@@ -50,19 +62,6 @@ importers:
       styled-components:
         specifier: ^6.0.0
         version: 6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-    devDependencies:
-      '@netlify/functions':
-        specifier: ^3.0.0
-        version: 3.0.0
-      '@types/node':
-        specifier: ^20.17.10
-        version: 20.17.10
-      '@types/react':
-        specifier: ^18
-        version: 18.3.17
-      '@types/react-dom':
-        specifier: ^18
-        version: 18.3.5(@types/react@18.3.17)
       typescript:
         specifier: ^5
         version: 5.7.2
