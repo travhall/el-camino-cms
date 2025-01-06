@@ -10,14 +10,14 @@ functions = "netlify/functions"
   force = true
 
 [[redirects]]
-  from = "/admin/build/*"
-  to = "/dist/build/:splat"
+  from = "/build/*"
+  to = "/dist/build/*"
   status = 200
   force = true
 
 [[redirects]]
-  from = "/admin/*"
-  to = "/dist/build/index.html"
+  from = "/uploads/*"
+  to = "/dist/uploads/:splat"
   status = 200
   force = true
 
@@ -28,10 +28,10 @@ functions = "netlify/functions"
   force = true
 
 [functions]
-  node_bundler = "esbuild"
   external_node_modules = [
     "better-sqlite3",
     "@strapi/database",
+    "@strapi/strapi",
     "sequelize",
     "mongoose",
     "redis",
